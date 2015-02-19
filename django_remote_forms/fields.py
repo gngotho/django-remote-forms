@@ -275,3 +275,15 @@ class RemoteIPAddressField(RemoteCharField):
 class RemoteSlugField(RemoteCharField):
     def as_dict(self):
         return super(RemoteSlugField, self).as_dict()
+
+
+# allauth.ChangePasswordForm
+class RemotePasswordField(RemoteCharField):
+    def as_dict(self):
+        return super(RemotePasswordField, self).as_dict()
+
+
+# allauth.ChangePasswordForm
+class RemoteSetPasswordField(RemoteCharField):
+    def as_dict(self):
+        return super(RemoteSetPasswordField, self).as_dict()
