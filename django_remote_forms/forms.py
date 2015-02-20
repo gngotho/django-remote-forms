@@ -153,3 +153,21 @@ class RemoteForm(object):
             form_dict['data'] = initial_data
 
         return resolve_promise(form_dict)
+
+
+class RemoteMultiForm(object):
+    def __init__(self, multi_form, *args, **kwargs):
+        self.multi_form = multi_form
+        # generate remote forms out of normal forms
+        self.remote_forms = [RemoteForm(form) for form in self.multi_form.forms]
+        # remote = self.remote_forms[0]
+        # dt = remote.as_dict()
+
+    def as_dict(self):
+        """
+        Return dict values of all these remote forms
+        """
+        normalized_forms = [remote.as_dict() for remote in self.remote_forms]
+        # organize forms according to form title
+        return {json_form['title']: json_form for json_form in normalized_forms}
+
