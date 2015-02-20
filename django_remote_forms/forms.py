@@ -160,8 +160,6 @@ class RemoteMultiForm(object):
         self.multi_form = multi_form
         # generate remote forms out of normal forms
         self.remote_forms = [RemoteForm(form) for form in self.multi_form.forms]
-        # remote = self.remote_forms[0]
-        # dt = remote.as_dict()
 
     def as_dict(self):
         """
