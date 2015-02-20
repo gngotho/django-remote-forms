@@ -153,7 +153,13 @@ class RemoteFileField(RemoteField):
 
 class RemoteImageField(RemoteFileField):
     def as_dict(self):
-        return super(RemoteImageField, self).as_dict()
+        field_dict = super(RemoteImageField, self).as_dict()
+        initial = field_dict['initial']
+
+        if hasattr(initial, 'path'):
+            field_dict.update({'initial': initial.path})
+
+        return field_dict
 
 
 class RemoteURLField(RemoteCharField):
