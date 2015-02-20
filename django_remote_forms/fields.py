@@ -205,6 +205,11 @@ class RemoteTypedChoiceField(RemoteChoiceField):
             'empty_value': self.field.empty_value
         })
 
+        # gender check
+        if self.form_initial_data in (0, 1):
+            # then gender is male or female
+            field_dict['initial'] = self.form_initial_data
+
         return field_dict
 
 
