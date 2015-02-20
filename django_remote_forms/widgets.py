@@ -149,6 +149,11 @@ class RemoteDateTimeInput(RemoteTimeInput):
         return widget_dict
 
 
+class RemoteSelectDateWidget(RemoteWidget):
+    def as_dict(self):
+        return super(RemoteSelectDateWidget, self).as_dict()
+
+
 class RemoteCheckboxInput(RemoteWidget):
     def as_dict(self):
         widget_dict = super(RemoteCheckboxInput, self).as_dict()
