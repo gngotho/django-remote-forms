@@ -151,7 +151,22 @@ class RemoteDateTimeInput(RemoteTimeInput):
 
 class RemoteSelectDateWidget(RemoteWidget):
     def as_dict(self):
-        return super(RemoteSelectDateWidget, self).as_dict()
+        widget_dict = super(RemoteSelectDateWidget, self).as_dict()
+        widget_dict['input_type'] = 'date'
+
+        current_year = datetime.datetime.now().year
+        widget_dict['choices'] = [{
+            'title': 'day',
+            'data': [{'key': x, 'value': x} for x in range(1, 32)]
+        }, {
+            'title': 'month',
+            'data': [{'key': x, 'value': y} for (x, y) in MONTHS.items()]
+        }, {
+            'title': 'year',
+            'data': [{'key': x, 'value': x} for x in range(current_year - 100, current_year + 1)]
+        }]
+
+        return widget_dict
 
 
 class RemoteCheckboxInput(RemoteWidget):
