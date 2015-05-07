@@ -1,5 +1,5 @@
 from django.utils.functional import Promise
-from django.utils.encoding import force_unicode
+from django.utils.encoding import force_text
 
 from django.http.request import QueryDict
 
@@ -14,7 +14,7 @@ def resolve_promise(o):
         o = [resolve_promise(x) for x in o]
     elif isinstance(o, Promise):
         try:
-            o = force_unicode(o)
+            o = force_text(o)
         except:
             # Item could be a lazy tuple or list
             try:
